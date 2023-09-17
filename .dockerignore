@@ -1,0 +1,14 @@
+# Ignora el directorio node_modules
+node_modules
+
+# Ignora el directorio .git
+.git
+
+# Ignora archivos de log
+*.log
+
+# Ignora el archivo .DS_Store, específico de macOS
+.DS_Store
+
+# Ignora archivos .env que pueden contener secretos
+.env
