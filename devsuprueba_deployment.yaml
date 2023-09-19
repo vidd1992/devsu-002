@@ -26,6 +26,18 @@ spec:
         name: devsuprueba-container
         ports:
         - containerPort: 8000
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 20
         env:
         - name: DATABASE_NAME
           valueFrom:
