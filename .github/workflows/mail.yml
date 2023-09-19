@@ -36,6 +36,11 @@ jobs:
       run: docker build . --file Dockerfile --tag vidd1992/devsu:latest
     - name: Docker push
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/devsu:latest
+    - name: Configure AWS CLI
+      run: |
+        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws configure set region ${{ secrets.AWS_REGION }}
     - name: Install and configure kubectl
       run: |
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
