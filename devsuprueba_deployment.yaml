@@ -15,14 +15,30 @@ spec:
     spec:
       containers:
       - image: vidd1992/devsu:latest
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
         imagePullPolicy: Always
         name: devsuprueba-container
         ports:
         - containerPort: 8000
         env:
         - name: DATABASE_NAME
-          value: "./dev.sqlite"
+          valueFrom:
+            secretKeyRef:
+              name: devsuprueba-secret
+              key: DATABASE_NAME
         - name: DATABASE_USER
-          value: "user"
+          valueFrom:
+            secretKeyRef:
+              name: devsuprueba-secret
+              key: DATABASE_USER
         - name: DATABASE_PASSWORD
-          value: "password"
+          valueFrom:
+            secretKeyRef:
+              name: devsuprueba-secret
+              key: DATABASE_PASSWORD
