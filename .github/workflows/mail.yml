@@ -31,9 +31,6 @@ jobs:
       continue-on-error: true
 
     - name: docker login
-      env:
-        USERNAME: ${{ secrets.DOCKERHUB_PASSWORD }}
-        PASSWORD: ${{ secrets.DOCKERHUB_USERNAME }}
       run: |
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p  ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Build the Docker image
