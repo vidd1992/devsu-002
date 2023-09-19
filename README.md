@@ -46,3 +46,8 @@ En el paquete devsu.rar se encuentra los archivos
 - Para el despliegue del balanceador de carga se ha implementado en base a la siguiente documentación.
   sh
   https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
+
+## 4) Url del servicio
+
+sh
+http://k8s-devsupru-devsupru-c002d69383-309554265.us-east-2.elb.amazonaws.com/
