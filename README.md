@@ -18,10 +18,11 @@
 ### 2) Pipelines con Github Actions
 
 > Note: En el diagrama se encuentra jenkins o aws codebuild como opcional ya que dependiendo de la necesidad de la arquitectura estos son vitales para mantener ordenado el proceso.
-> -Construción de la imagen
-> -Test unitarios (Mismos que ya tenia la aplicación además de incluir un test para el healtcheck)
-> -Análisis de código: Se ha implementado el módulo eslint mismo que en el pipeline al obtener varios errores se ha colocado continue-on-error: true para continuar el proceso
-> -Construir y subir la imagen: Se despliega en un dockerhub personal como imagen pública con el tag del hash de github para poder reconocer las diferentes imagenes.
+
+- Construción de la imagen
+- Test unitarios (Mismos que ya tenia la aplicación además de incluir un test para el healtcheck)
+- Análisis de código: Se ha implementado el módulo eslint mismo que en el pipeline al obtener varios errores se ha colocado continue-on-error: true para continuar el proceso
+- Construir y subir la imagen: Se despliega en un dockerhub personal como imagen pública con el tag del hash de github para poder reconocer las diferentes imagenes.
 
 ## 3)Kubernetes
 
