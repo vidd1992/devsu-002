@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: devsuprueba
+  name: devsuprueba-deployment
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: devsuprueba-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: devsuprueba-app
+    spec:
+      containers:
+      - image: vidd1992/devsu:latest
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
+        imagePullPolicy: Always
+        name: devsuprueba-container
+        ports:
+        - containerPort: 8000
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        env:
+        - name: DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: devsuprueba-secret
+              key: DATABASE_NAME
+        - name: DATABASE_USER
+          valueFrom:
+            secretKeyRef:
+              name: devsuprueba-secret
+              key: DATABASE_USER
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: devsuprueba-secret
+              key: DATABASE_PASSWORD

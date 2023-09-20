@@ -51,3 +51,7 @@ En el paquete devsu.rar se encuentra los archivos
 
 sh
 http://k8s-devsupru-devsupru-c002d69383-309554265.us-east-2.elb.amazonaws.com/
+
+## 5) Archivos extras
+
+- Se ha incluido dos carpetas: archivos-kubernetes y archivos-terraform como documentación de archivos usados para el despliegue de la infraestructura y despliegue de la arquitectura
